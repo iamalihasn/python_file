@@ -1,0 +1,42 @@
+import tkinter as tk
+from tkinter import ttk
+
+window = tk.Tk()
+window.title("My App")
+window.geometry("500x500")
+
+#Listbox
+
+village = ("Siwan","Chhata","Chhapiya","Gopalpur","Balia","Chhapra","Patna","Maharajganj")
+
+vill_var = tk.StringVar(value=village)
+vill_list = tk.Listbox(listvariable=vill_var,height=5,selectmode="extended")
+vill_list.pack(pady=5)
+
+def show_data(event):
+    all_vill = vill_list.curselection()
+    for i in all_vill:
+        print(vill_list.get(i))
+
+vill_list.bind("<<ListboxSelect>>",show_data)
+
+#combobox
+
+com_var = tk.StringVar()
+comb_box = ttk.Combobox(textvariable=com_var,values=("Ram","Shayam","Raju","Ravi","Sarwr"),state="readonly")
+comb_box.pack(pady=5)
+comb_box.set("Ali Hasan")
+def show_name(event):
+    print(com_var.get())
+
+comb_box.bind("<<ComboboxSelected>>",show_name)
+
+#Spinbox
+
+counter = tk.IntVar(value=10)
+
+spin_box = ttk.Spinbox(values=tuple(range(5,55,5)),from_=0,to=15,textvariable=counter,wrap=True)
+spin_box.pack()
+
+
+window.mainloop()
