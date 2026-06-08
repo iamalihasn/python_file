@@ -72,24 +72,30 @@ def add():
     global operator
     operator = "addition"
     global i
-    i = int(n1)
+    try:
+        i = int(n1)
+    except ValueError:
+        i = float(n1)
     e.delete(0,END)
 
 
-btn0 = Button(window,text="+",width=10,bg="black",fg="white",command=add)
-btn0.place(x=100,y=150)
+btn_0 = Button(window,text="+",width=10,bg="black",fg="white",command=add)
+btn_0.place(x=100,y=150)
 
 def sub():
     n1 = e.get()
     global operator
     operator = "subtract"
     global i
-    i = int(n1)
+    try:
+        i = int(n1)
+    except ValueError:
+        i = float(n1)
     e.delete(0,END)
 
 
-btn0 = Button(window,text="-",width=10,bg="black",fg="white",command=sub)
-btn0.place(x=190,y=150)
+btn_1 = Button(window,text="-",width=10,bg="black",fg="white",command=sub)
+btn_1.place(x=190,y=150)
 
 
 def product():
@@ -97,50 +103,66 @@ def product():
     global operator
     operator = "multiplication"
     global i
-    i = int(n1)
+    try:
+        i = int(n1)
+    except ValueError:
+        i = float(n1)
     e.delete(0,END)
 
-btn0 = Button(window,text="*",width=10,bg="black",fg="white",command=product)
-btn0.place(x=10,y=180)
+btn_2 = Button(window,text="*",width=10,bg="black",fg="white",command=product)
+btn_2.place(x=10,y=180)
 
 def div():
     n1 = e.get()
     global operator
     operator = "division"
     global i
-    i = int(n1)
+    try:
+        i = int(n1)
+    except ValueError:
+        i = float(n1)
     e.delete(0,END)
 
 
-btn0 = Button(window,text="/",width=10,bg="black",fg="white",command=div)
-btn0.place(x=100,y=180)
+btn_3 = Button(window,text="/",width=10,bg="black",fg="white",command=div)
+btn_3.place(x=100,y=180)
 
 def equal():
     n2 = e.get()
     e.delete(0,END)
+    
+    j = 0
+    try:
+        j = int(n2)
+    except ValueError:
+        j = float(n2)
 
     if operator == "addition":
-        e.insert(0,i+int(n2))
+        e.insert(0,i+j)
 
     elif operator == "subtract":
-        e.insert(0,i-int(n2))
+        e.insert(0,i-j)
 
     elif operator == "multiplication":
-        e.insert(0,i*int(n2))
+        e.insert(0,i*j)
 
     elif operator == "division":
-        e.insert(0,i/int(n2))
+        e.insert(0,i/j)
 
 
-btn0 = Button(window,text="=",width=36,bg="black",fg="white",command=equal)
-btn0.place(x=10,y=210)
+btn_5 = Button(window,text=".",width=10,bg="black",fg="white",command=lambda:click("."))
+btn_5.place(x=190,y=180)
+
+btn_4 = Button(window,text="=",width=17,bg="black",fg="white",command=equal)
+btn_4.place(x=140,y=210)
+
 
 
 def clear():
     e.delete(0,END)
 
-btn0 = Button(window,text="Clear",width=10,bg="red",fg="white",command=clear)
-btn0.place(x=190,y=180)
+btn_6 = Button(window,text="Clear",width=17,bg="red",fg="white",command=clear)
+btn_6.place(x=10,y=210)
 
 
 
